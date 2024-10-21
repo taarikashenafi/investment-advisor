@@ -1,10 +1,12 @@
 import React from 'react';
 import RetroGrid from "@/components/ui/retro-grid";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 const About = () => {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="w-full max-w-6xl mx-auto">
+    <div className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white relative">
+      <RetroGrid />
+      <div className="w-full max-w-6xl mx-auto z-10">
         <div className="flex flex-col items-center justify-center space-y-6">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight text-center">
             About Our Investment Advisor App
@@ -45,9 +47,11 @@ const About = () => {
               </p>
             </div>
           </div>
+          <div className="mt-12">
+            <RainbowButton>Try It Now!</RainbowButton>
+          </div>
         </div>
       </div>
-      <RetroGrid />
     </div>
   );
 }

@@ -29,7 +29,7 @@ const Hero = () => {
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-center justify-center space-y-6">
             <div className="text-center lg:text-center">
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight">
-                <span className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-700 via-neutral-500 to-neutral-300">
+                <span className="bg-clip-text bg-gradient-to-b from-neutral-700 via-neutral-500 to-neutral-300">
                   Invest Smarter.
                 </span>
               </h1>
