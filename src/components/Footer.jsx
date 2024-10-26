@@ -3,7 +3,6 @@ import React from 'react'
 const socialMedia = [
   { id: 1, img: "/github.svg", url: "https://github.com/taarikashenafi" },
   { id: 2, img: "/linkedin.svg", url: "https://linkedin.com/in/taarik-ashenafi" },
-  { id: 3, img: "/twit.svg", url: "https://twitter.com/yourusername" },
 ];
 
 const Footer = () => {
