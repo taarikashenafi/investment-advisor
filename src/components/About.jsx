@@ -1,7 +1,6 @@
 import React from 'react'
 import { BentoGrid, BentoCard } from '@/components/ui/bento-grid'; // Replace 'magic-ui-library' with the actual package name if different
 import { ReaderIcon, InfoCircledIcon, BarChartIcon, StarIcon } from "@radix-ui/react-icons";
-import TypingAnimation from '@/components/ui/typing-animation';
 const features = [
   {
     Icon: InfoCircledIcon,
@@ -40,10 +39,9 @@ const features = [
 const About = () => {
   return (
     <div className="mb-16"> {/* Added margin-bottom to create spacing */}
-      <TypingAnimation
-        className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem] mb-8"
-        text="About Us"
-      />
+      <div className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem] mb-8">
+        About Us
+      </div>
       <BentoGrid>
         {features.map((feature, idx) => (
           <BentoCard key={idx} {...feature} />

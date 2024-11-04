@@ -1,7 +1,6 @@
 import React from 'react';
 import { PlaceholdersAndVanishInput } from './ui/placeholders-and-vanish-input.jsx';
 import IconCloud from './ui/icon-cloud.jsx';
-import DotPattern from './ui/dot-pattern.jsx';
 
 const Hero = () => {
   const placeholders = [
@@ -25,9 +24,6 @@ const Hero = () => {
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
-      <DotPattern
-        className="absolute inset-0 h-full w-full [mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
-      />
       <div className="relative w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center space-y-12 lg:space-y-0 lg:space-x-8">
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-center justify-center space-y-6 text-center lg:text-center">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight">

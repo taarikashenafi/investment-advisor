@@ -1,13 +1,15 @@
 import About from './components/About'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
-import NavbarSimple from './components/Navbar'
+import Navbar from './components/Navbar'
+// import Dashboard from './components/Dashboard'
 function App() {
   return (
     <>
-      <NavbarSimple />
+      <Navbar />
       <Hero />
       <About />
+      {/* <Dashboard /> */}
       <Footer />
     </>
   )
