@@ -8,7 +8,8 @@ const features = [
     description: 'Get basic information about stocks',
     href: '#',
     cta: 'Learn More',
-    className: 'col-span-3 lg:col-span-1',
+    className: 'col-span-3 lg:col-span-1 text-white',
+    background: <div className="absolute inset-0"><img src='./info.jpg' alt="Info" className="object-cover w-full h-full" /></div>,
   },
   {
     Icon: BarChartIcon,
@@ -16,7 +17,8 @@ const features = [
     description: 'Analyze the sentiment of stocks',
     href: '#',
     cta: 'Learn More',
-    className: 'col-span-3 lg:col-span-2',
+    className: 'col-span-3 lg:col-span-2 text-white',
+    background: <div className="absolute inset-0"><img src='./sentiment.jpg' alt="Sentiment" className="object-cover w-full h-full" /></div>,
   },
   {
     Icon: ReaderIcon,
@@ -24,9 +26,11 @@ const features = [
     description: 'Read the latest news articles about stocks',
     href: '#',
     cta: 'Learn More',
-    className: 'col-span-3 lg:col-span-2',
+    className: 'col-span-3 lg:col-span-2 text-white',
+    background: <div className="absolute inset-0"><img src='./news.jpg' alt="News" className="object-cover w-full h-full" /></div>,
   },
   {
+    image: 'https://picsum.photos/200/303',
     Icon: StarIcon,
     name: 'Favorite Stocks',
     description: 'Save your favorite stocks for quick access',
@@ -38,7 +42,7 @@ const features = [
 
 const About = () => {
   return (
-    <div className="mb-16"> {/* Added margin-bottom to create spacing */}
+    <div id="about" className="mb-16"> {/* Added margin-bottom to create spacing */}
       <div className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem] mb-8">
         About Us
       </div>

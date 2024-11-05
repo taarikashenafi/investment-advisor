@@ -1,5 +1,4 @@
 import React from 'react';
-import { NewsCard } from './ui/news-card';
 
 const article = {
   banner_image: 'https://cdn.benzinga.com/files/images/story/2024/11/03/Apple-September-9-Glowtime-Event-Heres-E.jpeg?width=1200&height=800&fit=crop',
@@ -10,9 +9,10 @@ const article = {
 };
 
 const Dashboard = () => {
+  
   return (
-    <div>
-      <NewsCard article={article} />
+    <div style={{overflow: 'hidden'}}>
+      Hello world
     </div>
   )
 }
