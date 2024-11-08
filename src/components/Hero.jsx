@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PlaceholdersAndVanishInput } from './ui/placeholders-and-vanish-input.jsx';
 import IconCloud from './ui/icon-cloud.jsx';
 import { RainbowButton } from './ui/rainbow-button.jsx';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   const placeholders = [
       "AAPL", "NVDA", "MSFT", "TSLA", "GOOG", "AMZN","META",
   ];
@@ -43,7 +46,7 @@ const Hero = () => {
               onSubmit={onSubmit}
             />
           </div>
-          <RainbowButton className="mt-8" onClick={() => { window.location.href = "/dashboard"; }}>
+          <RainbowButton className="mt-8" onClick={() => navigate('/dashboard')}>
             Try Now
             <ArrowRightIcon className="ml-2 h-4 w-4" />
           </RainbowButton>

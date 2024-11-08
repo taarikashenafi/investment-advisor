@@ -42,7 +42,7 @@ const features = [
 
 const About = () => {
   return (
-    <div id="about" className="mb-16"> {/* Added margin-bottom to create spacing */}
+    <div id="about" className="mb-16 mt-20"> 
       <div className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem] mb-8">
         About Us
       </div>
