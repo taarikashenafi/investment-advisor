@@ -10,8 +10,8 @@ const Navbar = () => {
           <Link to="/" className="text-black font-sans font-inter text-sm hover:text-black">
             Home
           </Link>
-          <Link to="/about" aria-current="page" className="text-black font-sans font-inter text-sm hover:text-black">
-            About
+          <Link to="/features" aria-current="page" className="text-black font-sans font-inter text-sm hover:text-black">
+            Features
           </Link>
           <Link to="/mission" className="text-black font-sans font-inter text-sm hover:text-black">
             Mission

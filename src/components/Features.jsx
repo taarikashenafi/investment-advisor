@@ -1,6 +1,8 @@
 import React from 'react'
-import { BentoGrid, BentoCard } from '@/components/ui/bento-grid'; // Replace 'magic-ui-library' with the actual package name if different
+import Layout from './Layout'
+import { BentoGrid, BentoCard } from '@/components/ui/bento-grid';
 import { ReaderIcon, InfoCircledIcon, BarChartIcon, StarIcon } from "@radix-ui/react-icons";
+
 const features = [
   {
     Icon: InfoCircledIcon,
@@ -40,19 +42,25 @@ const features = [
   },
 ];
 
-const About = () => {
+const Features = () => {
   return (
-    <div id="about" className="mb-16 mt-20"> 
-      <div className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem] mb-8">
-        About Us
+    <Layout>
+    <div className="flex flex-col min-h-screen">
+      <div id="features" className="flex-grow py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold tracking-[-0.02em] text-black dark:text-white md:text-7xl md:leading-[5rem] mb-8">
+            Key Features
+          </h2>
+          <BentoGrid className="mb-8">
+            {features.map((feature, idx) => (
+              <BentoCard key={idx} {...feature} />
+            ))}
+          </BentoGrid>
+        </div>
       </div>
-      <BentoGrid>
-        {features.map((feature, idx) => (
-          <BentoCard key={idx} {...feature} />
-        ))}
-      </BentoGrid>
     </div>
+    </Layout>
   )
 }
 
-export default About
+export default Features

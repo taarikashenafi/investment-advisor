@@ -1,4 +1,5 @@
 import React from 'react';
+import Layout from './Layout';
 import { useNavigate } from 'react-router-dom';
 import { PlaceholdersAndVanishInput } from './ui/placeholders-and-vanish-input.jsx';
 import IconCloud from './ui/icon-cloud.jsx';
@@ -28,6 +29,7 @@ const Hero = () => {
   };    
 
   return (
+    <Layout>
     <div className="relative min-h-screen w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 bg-white">
       <div className="relative w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center space-y-12 lg:space-y-0 lg:space-x-8">
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-center justify-center space-y-6 text-center lg:text-left">
@@ -57,6 +59,7 @@ const Hero = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }
 

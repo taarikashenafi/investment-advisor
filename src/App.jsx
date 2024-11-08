@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import About from './components/About'
+import Features from './components/Features'
 import Hero from './components/Hero'
-import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import Dashboard from './components/Dashboard'
 import AuthPage from './components/AuthPage'
@@ -14,12 +13,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/features" element={<Features />} />
         <Route path="/mission" element={<Mission />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/auth" element={<AuthPage />} />
       </Routes>
-      <Footer />
     </Router>
   )
 }

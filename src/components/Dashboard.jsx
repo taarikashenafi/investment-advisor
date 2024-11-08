@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Layout from './Layout'
 import { Search, Star, StarOff, AlertTriangle } from 'lucide-react';
 import {
   Card,
@@ -114,9 +115,10 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 max-w-7xl mx-auto">
+    <Layout>
+    <div className="p-4 md:p-6 max-w-7xl mx-auto min-h-dvh flex items-center justify-center">
       {/* Search Bar */}
-      <div className="relative mb-6">
+      <div className="relative mb-6 w-full max-w-md mx-auto">
         <form onSubmit={handleSearch} className="flex gap-2">
           <div className="relative flex-1">
             <input
@@ -301,7 +303,10 @@ const Dashboard = () => {
         </div>
       )}
     </div>
+    </Layout>
   );
 };
 
 export default Dashboard;
+
+
