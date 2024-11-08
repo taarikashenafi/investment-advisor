@@ -17,10 +17,10 @@ const AuthPage = () => {
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        {isLogin ? 'Login to Aceternity' : 'Sign up for Aceternity'}
+        {isLogin ? 'Login to Investment Advisor' : 'Sign up for Investment Advisor'}
       </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        {isLogin ? 'Login to access your account' : "Create an account to join Aceternity"}
+        {isLogin ? 'Login to access your account' : "Create an account to join Investment Advisor"}
       </p>
 
       <Tabs defaultValue="login" onValueChange={(value) => setIsLogin(value === 'login')} className="my-8">
