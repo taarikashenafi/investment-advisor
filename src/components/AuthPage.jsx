@@ -1,4 +1,6 @@
 "use client";
+
+import Layout from './Layout';
 import React, { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs';
 import { Label } from './ui/label';

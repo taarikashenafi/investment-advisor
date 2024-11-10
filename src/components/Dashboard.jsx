@@ -183,7 +183,7 @@ const Dashboard = () => {
                 <div className="flex items-baseline gap-4">
                   <span className="text-4xl font-bold">${stockData.price.toFixed(2)}</span>
                   <span className={`text-xl ${stockData.change >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                    {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)} ({stockData.changePercent.toFixed(2)}%)
+                    {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)} ({stockData.changePercent.toFixed(2)}%) from yesterday
                   </span>
                 </div>
               </CardContent>
@@ -252,7 +252,14 @@ const Dashboard = () => {
                   <ul className="space-y-4">
                     {stockData.news.map((item) => (
                       <li key={item.id} className="border-b pb-2">
-                        <p className="font-medium">{item.title}</p>
+                        <a
+                          href={item.url} // Link to the news article
+                          target="_blank" // Opens in a new tab
+                          rel="noopener noreferrer" // Security attributes
+                          className="font-medium text-blue-600 hover:underline" // Link styling
+                        >
+                          {item.title}
+                        </a>
                         <p className="text-sm text-gray-600">{item.date}</p>
                       </li>
                     ))}
