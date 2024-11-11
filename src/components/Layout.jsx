@@ -6,7 +6,7 @@ const socialMedia = [
   { id: 2, img: "/linkedin.svg", url: "https://linkedin.com/in/taarik-ashenafi" },
 ];
 
-export default function Layout({ children }) {
+export default function Layout({ children }) {  
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-grow pt-10">
@@ -19,7 +19,7 @@ export default function Layout({ children }) {
           </p>
           <div className="flex items-center gap-3">
             {socialMedia.map((info) => (
-              <Link
+              <a
                 key={info.id}
                 href={info.url}
                 target="_blank"
@@ -27,7 +27,7 @@ export default function Layout({ children }) {
                 className="w-10 h-10 flex items-center justify-center rounded-lg border bg-background hover:bg-muted transition-colors"
               >
                 <img src={info.img} alt={`${info.url.split('.com/')[1]} icon`} width={20} height={20} />
-              </Link>
+              </a>
             ))}
           </div>
         </div>

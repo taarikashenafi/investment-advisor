@@ -85,7 +85,8 @@ export const getRealTimePrice = async (ticker) => {
     const response = await finnhubApi.get(`/quote?symbol=${ticker}&token=${FINNHUB_API_KEY}`);
     return {
       currentPrice: response.data.c,   // Current price
-      change: response.data.d          // Change
+      change: response.data.d,          // Change
+      changePercent: response.data.dp  // Change percentage
     };
   } catch (error) {
     console.error('Error fetching real-time price:', error);
@@ -174,7 +175,7 @@ export const getSentimentData = async (ticker) => {
   try {
     const response = await fmpApi.get(`/v3/rating/${ticker}?apikey=${FMP_API_KEY}`);
     return {
-      ratingRecommendation: response.data[0]?.ratingRecommendation || 'HOLD'
+      ratingRecommendation: response.data[0]?.ratingRecommendation
     };
   } catch (error) {
     console.error('Error fetching sentiment data:', error);
@@ -198,7 +199,7 @@ export const getStockData = async (ticker, timeRange = '1M') => {
       ticker: profile.symbol,
       price: price.currentPrice,
       change: price.change,
-      changePercent: price.dp,
+      changePercent: price.changePercent,
       chartData: historical,
       sentiment,
       news,

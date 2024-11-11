@@ -10,8 +10,8 @@ const features = [
     description: 'Get basic information about stocks',
     href: '#',
     cta: 'Learn More',
-    className: 'col-span-3 lg:col-span-1 text-white',
-    background: <div className="absolute inset-0"><img src='./info.jpg' alt="Info" className="object-cover w-full h-full" /></div>,
+    className: 'col-span-3 lg:col-span-1',
+    background: <div className="absolute inset-0"><img src='./info.jpg' alt="Info" className="object-cover object-left w-full h-full" /></div>,
   },
   {
     Icon: BarChartIcon,
@@ -19,8 +19,8 @@ const features = [
     description: 'Analyze the sentiment of stocks',
     href: '#',
     cta: 'Learn More',
-    className: 'col-span-3 lg:col-span-2 text-white',
-    background: <div className="absolute inset-0"><img src='./sentiment.jpg' alt="Sentiment" className="object-cover w-full h-full" /></div>,
+    className: 'col-span-3 lg:col-span-2',
+    background: <div className="absolute inset-0"><img src='./sentiment.jpg' alt="Sentiment" className="object-cover object-top w-full h-full" /></div>,
   },
   {
     Icon: ReaderIcon,
@@ -28,17 +28,17 @@ const features = [
     description: 'Read the latest news articles about stocks',
     href: '#',
     cta: 'Learn More',
-    className: 'col-span-3 lg:col-span-2 text-white',
-    background: <div className="absolute inset-0"><img src='./news.jpg' alt="News" className="object-cover w-full h-full" /></div>,
+    className: 'col-span-3 lg:col-span-2 ',
+    background: <div className="absolute inset-0"><img src='./news.jpg' alt="News" className="object-cover object-top w-full h-ful" /></div>,
   },
   {
-    image: 'https://picsum.photos/200/303',
     Icon: StarIcon,
     name: 'Favorite Stocks',
     description: 'Save your favorite stocks for quick access',
     href: '#',
     cta: 'Learn More',
     className: 'col-span-3 lg:col-span-1',
+    background: <div className="absolute inset-0"><img src='./favorites.jpg' alt="Favorite" className="object-cover w-full h-full" /></div>,
   },
 ];
 

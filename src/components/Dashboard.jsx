@@ -181,7 +181,7 @@ const Dashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="flex items-baseline gap-4">
-                  <span className="text-4xl font-bold">${stockData.price.toFixed(2)}</span>
+                  <span className="text-4xl font-bold">{stockData.price.toFixed(2)}</span>
                   <span className={`text-xl ${stockData.change >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                     {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)} ({stockData.changePercent.toFixed(2)}%) from yesterday
                   </span>
