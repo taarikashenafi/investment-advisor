@@ -7,7 +7,7 @@ const POLYGON_API_KEY = import.meta.env.VITE_POLYGON_API_KEY;
 
 // Create axios instances for each API
 const fmpApi = axios.create({
-  baseURL: 'https://financialmodelingprep.com/api/v3'
+  baseURL: 'https://financialmodelingprep.com/api'
 });
 
 const finnhubApi = axios.create({
@@ -47,7 +47,7 @@ export const getSearchSuggestions = async (query) => {
   if (cached) return cached;
 
   try {
-    const response = await fmpApi.get(`/search?query=${query}&limit=10&apikey=${FMP_API_KEY}`);
+    const response = await fmpApi.get(`/v3/search?query=${query}&limit=10&apikey=${FMP_API_KEY}`);
     const suggestions = response.data.map(item => ({
       symbol: item.symbol,
       name: item.name,
@@ -69,7 +69,7 @@ const getCompanyProfile = async (ticker) => {
   if (cached) return cached;
 
   try {
-    const response = await fmpApi.get(`/profile/${ticker}?apikey=${FMP_API_KEY}`);
+    const response = await fmpApi.get(`/v3/profile/${ticker}?apikey=${FMP_API_KEY}`);
     const profile = response.data[0];
     setCachedData(cacheKey, profile);
     return profile;
@@ -80,10 +80,13 @@ const getCompanyProfile = async (ticker) => {
 };
 
 // Real-time price data
-const getRealTimePrice = async (ticker) => {
+export const getRealTimePrice = async (ticker) => {
   try {
     const response = await finnhubApi.get(`/quote?symbol=${ticker}&token=${FINNHUB_API_KEY}`);
-    return response.data;
+    return {
+      currentPrice: response.data.c,   // Current price
+      change: response.data.d          // Change
+    };
   } catch (error) {
     console.error('Error fetching real-time price:', error);
     throw error;
@@ -167,27 +170,14 @@ const getNewsData = async (ticker) => {
 };
 
 // Sentiment analysis
-const getSentiment = async (ticker) => {
-  const cacheKey = `sentiment_${ticker}`;
-  const cached = getCachedData(cacheKey);
-  if (cached) return cached;
-
+export const getSentimentData = async (ticker) => {
   try {
-    const [technicalAnalysis, priceTargets] = await Promise.all([
-      finnhubApi.get(`/technicalIndicator?symbol=${ticker}&resolution=D&token=${FINNHUB_API_KEY}`),
-      fmpApi.get(`/price-target?symbol=${ticker}&apikey=${FMP_API_KEY}`)
-    ]);
-
-    const sentiment = {
-      recommendation: priceTargets.data[0]?.targetConsensus || 'HOLD',
-      priceTarget: priceTargets.data[0]?.targetMedian || null,
-      technicalSignal: technicalAnalysis.data?.signal || 'NEUTRAL'
+    const response = await fmpApi.get(`/v3/rating/${ticker}?apikey=${FMP_API_KEY}`);
+    return {
+      ratingRecommendation: response.data[0]?.ratingRecommendation || 'HOLD'
     };
-
-    setCachedData(cacheKey, sentiment);
-    return sentiment;
   } catch (error) {
-    console.error('Error fetching sentiment:', error);
+    console.error('Error fetching sentiment data:', error);
     throw error;
   }
 };
@@ -200,14 +190,14 @@ export const getStockData = async (ticker, timeRange = '1M') => {
       getRealTimePrice(ticker),
       getHistoricalData(ticker, timeRange),
       getNewsData(ticker),
-      getSentiment(ticker)
+      getSentimentData(ticker)
     ]);
 
     return {
       name: profile.companyName,
       ticker: profile.symbol,
-      price: price.c,
-      change: price.d,
+      price: price.currentPrice,
+      change: price.change,
       changePercent: price.dp,
       chartData: historical,
       sentiment,

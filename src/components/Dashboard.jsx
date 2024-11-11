@@ -88,7 +88,7 @@ const Dashboard = () => {
         
         {/* Search Bar */}
         <div className="relative mb-8 w-full max-w-3xl mx-auto">
-          <form onSubmit={handleSearch} className="flex gap-2 shadow-md">
+          <form onSubmit={handleSearch} className="flex gap-2 items-center">
             <div className="relative flex-1">
               <input
                 type="text"
