@@ -132,12 +132,13 @@ const Dashboard = () => {
         {/* Favorites */}
         {favorites.length > 0 && (
           <div className="mb-8 flex gap-2 overflow-x-auto pb-2">
+            <div className="font-bold">Favorites</div>
             {favorites.map((symbol) => (
               <button
                 key={symbol}
                 onClick={() => setSelectedStock(symbol)}
-                className={`px-3 py-1 rounded-full border ${
-                  selectedStock === symbol ? 'bg-blue-600 text-white' : 'hover:bg-gray-100'
+                className={`px-3 py-1 rounded-full border text-[#007BFF] hover:bg-gray-100 ${
+                  selectedStock === symbol ? 'bg-gray-100' : ''
                 }`}
               >
                 {symbol}
