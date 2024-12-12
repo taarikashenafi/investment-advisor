@@ -1,6 +1,6 @@
-import path from "path"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react()],
@@ -9,4 +9,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-})
+  build: {
+    outDir: "dist", // Ensures the output directory is "dist"
+    rollupOptions: {
+      external: ["axios", "lucide-react"], // Externalize problematic dependencies
+    },
+  },
+  server: {
+    port: 3000, // Optional: Customize your local dev server port
+  },
+});
