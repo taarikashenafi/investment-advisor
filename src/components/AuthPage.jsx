@@ -7,44 +7,63 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { cn } from '@/lib/utils';
 import { IconBrandGithub, IconBrandGoogle } from '@tabler/icons-react';
+import { supabase } from '../lib/supabaseClient'; // Import Supabase client
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
 
-  const handleOAuthLogin = (provider) => {
-    // OAuth login logic here
-    console.log(`Logging in with ${provider}`);
+  const handleOAuthLogin = async (provider) => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({ provider });
+      if (error) {
+        console.error(`Error logging in with ${provider}:`, error.message);
+      } else {
+        console.log(`Successfully logged in with ${provider}`);
+      }
+    } catch (err) {
+      console.error('Unexpected error during OAuth login:', err);
+    }
   };
 
   return (
     <Layout>
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        {isLogin ? 'Login to Investment Advisor' : 'Sign up for Investment Advisor'}
-      </h2>
-      <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        {isLogin ? 'Login to access your account' : "Create an account to join Investment Advisor"}
-      </p>
+      <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+        <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+          {isLogin ? 'Login to Investment Advisor' : 'Sign up for Investment Advisor'}
+        </h2>
+        <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+          {isLogin ? 'Login to access your account' : 'Create an account to join Investment Advisor'}
+        </p>
 
-      <Tabs defaultValue="login" onValueChange={(value) => setIsLogin(value === 'login')} className="my-8">
-        <TabsList>
-          <TabsTrigger value="login">Login</TabsTrigger>
-          <TabsTrigger value="signup">Sign Up</TabsTrigger>
-        </TabsList>
+        <Tabs
+          defaultValue="login"
+          onValueChange={(value) => setIsLogin(value === 'login')}
+          className="my-8"
+        >
+          <TabsList>
+            <TabsTrigger value="login">Login</TabsTrigger>
+            <TabsTrigger value="signup">Sign Up</TabsTrigger>
+          </TabsList>
 
-        {/* Login Tab */}
-        <TabsContent value="login">
-          <AuthForm isLogin={true} />
-          <OAuthButtons handleOAuthLogin={handleOAuthLogin} />
-        </TabsContent>
+          {/* Login Tab */}
+          <TabsContent value="login">
+            <AuthForm isLogin={true} />
+            <div className="text-center font-medium text-sm text-neutral-600 dark:text-neutral-300 my-4">
+              or login with
+            </div>
+            <OAuthButtons handleOAuthLogin={handleOAuthLogin} />
+          </TabsContent>
 
-        {/* Sign Up Tab */}
-        <TabsContent value="signup">
-          <AuthForm isLogin={false} />
-          <OAuthButtons handleOAuthLogin={handleOAuthLogin} />
-        </TabsContent>
-      </Tabs>
-    </div>
+          {/* Sign Up Tab */}
+          <TabsContent value="signup">
+            <AuthForm isLogin={false} />
+            <div className="text-center font-medium text-sm text-neutral-600 dark:text-neutral-300 my-4">
+              or sign up with
+            </div>
+            <OAuthButtons handleOAuthLogin={handleOAuthLogin} />
+          </TabsContent>
+        </Tabs>
+      </div>
     </Layout>
   );
 };
@@ -87,7 +106,7 @@ const OAuthButtons = ({ handleOAuthLogin }) => (
     <button
       className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
       type="button"
-      onClick={() => handleOAuthLogin('GitHub')}
+      onClick={() => handleOAuthLogin('github')}
     >
       <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
       <span className="text-neutral-700 dark:text-neutral-300 text-sm">
@@ -98,7 +117,7 @@ const OAuthButtons = ({ handleOAuthLogin }) => (
     <button
       className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
       type="button"
-      onClick={() => handleOAuthLogin('Google')}
+      onClick={() => handleOAuthLogin('google')}
     >
       <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
       <span className="text-neutral-700 dark:text-neutral-300 text-sm">
