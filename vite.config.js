@@ -10,7 +10,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "dist", // Ensures the output directory is "dist"
+    outDir: "public", // Ensures the output directory is "dist"
     rollupOptions: {
       external: ["axios", "lucide-react"], // Externalize problematic dependencies
     },
